@@ -1,0 +1,53 @@
+.contenedor-usuarios{
+    background-color: #0f0f0f;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.titulo-usuarios{
+    color: white;
+    margin-top: -50px;
+    margin-bottom: 50px;
+}
+
+.usuarios{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    text-align: center;
+    font-size: .8rem;
+    color: #dedede;
+}
+
+
+.usuario-quien{
+    width: 20vw;
+    height: 24vh;
+}
+
+.usuario-quien img{
+    width: 100%;
+    border-radius: 5px;
+    border: 2px solid transparent;
+    
+}
+
+.usuario-quien img:hover{
+    border: 2px solid #dedede;
+    cursor: pointer;
+}
+
+@media(min-width:768px){
+    .usuario-quien{
+        width: 10vw;
+        height: 12vh;
+    }
+
+    .titulo-usuarios{
+        margin-top:-200px;
+    }
+}
