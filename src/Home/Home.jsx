@@ -3,6 +3,8 @@ import './Home.css'
 import axios from 'axios'
 import Carousel from '../Carousel/Carousel'
 import HomeHeader from '../HomeHeader/HomeHeader';
+import Nav from '../Nav/Nav'
+import Loader from '../Loader/Loader';
 export default function Home() {
 
     const options = {
@@ -63,14 +65,23 @@ export default function Home() {
 
     }, [])
 
-    console.log(movies);
+    const [isLoading, setIsLoading] = useState(true);
+
+    // Se agrega un evento de carga a la ventana (window)
+    window.addEventListener('load', () => {
+        setIsLoading(false); // Cambiar el estado una vez que todo se ha cargado
+    })
 
     return (
         <div>
-            <HomeHeader movies={movies} URL_IMAGE={URL_IMAGE}/>
-            <Carousel URL_IMAGE={URL_IMAGE} movies={movies} titulo={"Populares en netflix"} />
-            <Carousel URL_IMAGE={URL_IMAGE} movies={terrorMovies} titulo={"Terror"} />
-            <Carousel URL_IMAGE={URL_IMAGE} movies={actionMovies} titulo={"Accion"}/>
+            {isLoading ? <Loader /> :
+                <div>
+                    <Nav />
+                    <HomeHeader movies={movies} URL_IMAGE={URL_IMAGE} />
+                    <Carousel URL_IMAGE={URL_IMAGE} movies={movies} titulo={"Populares en netflix"} />
+                    <Carousel URL_IMAGE={URL_IMAGE} movies={terrorMovies} titulo={"Terror"} />
+                    <Carousel URL_IMAGE={URL_IMAGE} movies={actionMovies} titulo={"Accion"} />
+                </div>}
         </div>
     )
 }

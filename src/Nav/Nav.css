@@ -1,4 +1,4 @@
-.nav{
+.nav {
     position: fixed;
     z-index: 2;
     top: 0;
@@ -9,36 +9,43 @@
     padding: 5px;
     transition: 0.3s ease-in-out;
     background-color: transparent;
-    background: linear-gradient(0deg, rgba(175,70,41,0) 43%, #141414 100%);
+    background: linear-gradient(0deg, rgba(175, 70, 41, 0) 43%, #141414 100%);
     color: white;
 }
 
-.nav div{
+.nav div {
     display: flex;
     align-items: center;
 }
 
-.nav-logo{
+.nav-logo {
     width: 25px;
     margin-right: 15px;
 }
-  
-.nav.fixed{
+
+.nav.fixed {
     background-color: #141414;
-    transition: background-color 0.3s ease-in-out;}
-    
-.caca{
+    transition: background-color 0.3s ease-in-out;
+}
+
+.caca {
     margin-right: 10px;
     width: 35px;
     border-radius: 10px;
 }
 
-.cast-icon{
+.cast-icon {
     font-size: 1.5rem;
     font-weight: 900;
 }
 
-.div-derecha{
+.div-derecha {
     width: 80px;
     justify-content: space-between;
+}
+
+@media (min-width:768px) {
+    .nav-logo {
+        width: 50px;
+    }
 }
