@@ -67,10 +67,12 @@ export default function Home() {
 
     const [isLoading, setIsLoading] = useState(true);
 
-    // Se agrega un evento de carga a la ventana (window)
-    window.addEventListener('load', () => {
-        setIsLoading(false); // Cambiar el estado una vez que todo se ha cargado
-    })
+useEffect(() => {
+  setTimeout(() => {
+    setIsLoading(false)
+  }, 4000);
+},[])
+
 
     return (
         <div>
