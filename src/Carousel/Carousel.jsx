@@ -14,6 +14,9 @@ export default function App({ URL_IMAGE, movies,titulo }) {
     const [width, setWidth] = useState(getInitialWidth)
     const [imgCarousel, setImgCarousel] = useState(widthEnPx)
 
+
+    //PARA MODIFICAR LA CANTIDAD DE IMAGENES POR CAROUSEL EN EL VW
+
     useEffect(() => {
         const handleResize = () => {
             setWidth(getInitialWidth())
@@ -27,6 +30,8 @@ export default function App({ URL_IMAGE, movies,titulo }) {
     function getInitialWidth() {
         return window.innerWidth < 768 ? 2.5 : 5;
     }
+
+    //PARA MODIFICAR LA IMG DEL CAROUSEL
 
     useEffect(() => {
         const windowResize = () => {

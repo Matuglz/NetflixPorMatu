@@ -1,10 +1,12 @@
 import React from 'react'
 import './HomeHeader.css'
+import Nav from '../Nav/Nav'
 
 export default function HomeHeader({ movies, URL_IMAGE }) {
 
   return (
     <div className='header-container'>
+      <Nav/>
       {
         movies.length > 0 &&
         <div>
