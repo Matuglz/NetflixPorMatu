@@ -1,0 +1,28 @@
+.header-container{
+    position: relative;
+}
+
+.img-header-container{
+    width: 100%;
+    height: 80vh;
+    object-fit: cover;
+}
+
+.header-body{
+    position: absolute;
+    bottom: 0;
+    padding: 10%;
+    background: linear-gradient(180deg, rgba(175,70,41,0) 0%, #141414 76%);
+}
+
+.movie-title{
+    color: white;
+}
+
+.sinopsis{
+    color: white;
+    height: 20vh;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
