@@ -61,17 +61,25 @@ export default function Home() {
         fetch((`${URL_GENRE}${ID_ACTION}`), options)
             .then(response => response.json())
             .then(response => setActionMovies(response.results))
+        
+            window.addEventListener('load', () => {
+                setIsLoading(false);
+              });
+          
+              return () => {
+                document.removeEventListener('DOMContentLoaded', () => {
+                  setIsLoading(false);
+                });
+                window.removeEventListener('load', () => {
+                  setIsLoading(false);
+                })}
+              
 
 
     }, [])
 
     const [isLoading, setIsLoading] = useState(true);
 
-useEffect(() => {
-  setTimeout(() => {
-    setIsLoading(false)
-  }, 4000);
-},[])
 
 
     return (
