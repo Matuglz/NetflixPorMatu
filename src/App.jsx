@@ -3,21 +3,28 @@ import 'bootstrap-icons/font/bootstrap-icons.css'
 import Inicio from './Inicio/Inicio'
 import QuienEs from './QuienEs/QuienEs'
 import Home from './Home/Home'
-import Loader from './Loader/Loader'
+import Pruebas from './Prubas/Pruebas'
+import { SkeletonTheme } from 'react-loading-skeleton'
+import MoviesProvider from './Context/MoviesContext'
 
 
 function App() {
 
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path='/pruebas' element={<Loader/>}/>
-        <Route path='/' element={<Inicio />} />
-        <Route path='/Usuarios' element={<QuienEs />} />
-        <Route path='/Home' element={<Home />} />
-      </Routes>
-    </BrowserRouter>
+    <SkeletonTheme baseColor='#313131' highlightColor='#525252'>
+      <MoviesProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path='/pruebas' element={<Pruebas />} />
+            <Route path='/' element={<Inicio />} />
+            <Route path='/Usuarios' element={<QuienEs />} />
+            <Route path='/Home' element={<Home />} />
+          </Routes>
+        </BrowserRouter>
+      </MoviesProvider>
+    </SkeletonTheme>
+
   )
 }
 

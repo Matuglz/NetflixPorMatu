@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, Suspense, lazy } from 'react'
 import './Home.css'
 import axios from 'axios'
-import Carousel from '../Carousel/Carousel'
+const Carousel = lazy(() => import('../Carousel/Carousel'))
 import HomeHeader from '../HomeHeader/HomeHeader';
 import Nav from '../Nav/Nav'
 import Loader from '../Loader/Loader';
+import Buscador from '../Buscador/Buscador';
 export default function Home() {
 
     const options = {
@@ -61,37 +62,32 @@ export default function Home() {
         fetch((`${URL_GENRE}${ID_ACTION}`), options)
             .then(response => response.json())
             .then(response => setActionMovies(response.results))
-        
-            window.addEventListener('load', () => {
-                setIsLoading(false);
-              });
-          
-              return () => {
-                document.removeEventListener('DOMContentLoaded', () => {
-                  setIsLoading(false);
-                });
-                window.removeEventListener('load', () => {
-                  setIsLoading(false);
-                })}
-              
-
-
     }, [])
 
-    const [isLoading, setIsLoading] = useState(true);
 
+    //-----------------------------------------------------------------------
+    const [buscar, setBuscar] = useState(false)
+
+    function toggleBuscar() {
+        setBuscar(!buscar)
+    }
 
 
     return (
-        <div>
-            {isLoading ? <Loader /> :
+
+        <Suspense fallback={<Loader/>}>
+            <Nav toggleBuscar={toggleBuscar} />
+
+            {buscar ?
+                <Buscador toggleBuscar={toggleBuscar}/>
+                :
                 <div>
-                    <Nav />
                     <HomeHeader movies={movies} URL_IMAGE={URL_IMAGE} />
                     <Carousel URL_IMAGE={URL_IMAGE} movies={movies} titulo={"Populares en netflix"} />
                     <Carousel URL_IMAGE={URL_IMAGE} movies={terrorMovies} titulo={"Terror"} />
                     <Carousel URL_IMAGE={URL_IMAGE} movies={actionMovies} titulo={"Accion"} />
                 </div>}
-        </div>
+        </Suspense>
+
     )
 }
