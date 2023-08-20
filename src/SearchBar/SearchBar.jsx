@@ -15,12 +15,9 @@ const SearchBar = ({toggleBuscar}) => {
       Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1MzNhNTc4Yzg3N2U3Y2I1NTY4Nzk1ODViMDQ5NjczNCIsInN1YiI6IjY0ZDJkOTE0ZDEwMGI2MDExYzdlZTVhMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.qTf7ppiGnJwfI8RiUBDdKD6Nr0br8K4wlpsR1C-UoOA'
     }
   }
-  const [isExpanded, setIsExpanded] = useState(false)
+  const {isExpanded, toggleExpand} = useContext(MoviesContext)
   const [busqueda, setBusqueda] = useState("")
 
-  const toggleExpand = () => {
-    setIsExpanded(!isExpanded)
-  }
 
   useEffect(() => {
     let timeoutId;

@@ -5,7 +5,7 @@ import './Buscador.css'
 
 export default function Buscador({ toggleBuscar }) {
 
-    const { peliculasBusqueda, URL_IMAGE } = useContext(MoviesContext)
+    const { peliculasBusqueda, URL_IMAGE, toggleExpand } = useContext(MoviesContext)
 
     //TIPS BOTONES
 
@@ -25,7 +25,7 @@ export default function Buscador({ toggleBuscar }) {
 
     return (
         <div>
-            <button className='volver-atras' onClick={toggleBuscar}>atras</button>
+            <button className='volver-atras' onClick={()=>{toggleBuscar(), toggleExpand()}}>atras</button>
             <div className='contenedor-buscador'>
                 {peliculasBusqueda.map((movie) => {
                     const imageError = !movie.poster_path;
@@ -56,7 +56,6 @@ export default function Buscador({ toggleBuscar }) {
                                 </div>
                             </div>
                         </div>
-
                     );
                 })}
             </div>

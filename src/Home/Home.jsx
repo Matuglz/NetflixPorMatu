@@ -27,35 +27,13 @@ export default function Home() {
     const [actionMovies, setActionMovies] = useState([])
     const [terrorMovies, setTerrorMovies] = useState([])
     const [movies, setMovies] = useState([])
-    const [searchKey, setSearchKey] = useState("")
-
-
-    //------------------------------------------------------------------
-    async function fetchMovies(searchKey) {
-        const type = searchKey ? "search" : 'discover'
-        const { data: { results },
-
-        } = await axios.get(`${API_URL}/${type}/movie/`, {
-            params: {
-                api_key: API_KEY,
-                query: searchKey
-            }
-        })
-        setMovies(results)
-    }
-
-    useEffect(() => {
-        const delay = setTimeout(() => {
-            fetchMovies(searchKey);
-
-        }, 1000)
-
-        return () => clearTimeout(delay);
-    }, [searchKey]);
 
     //-----------------------------------------------------
 
     useEffect(() => {
+        fetch(`${API_URL}/discover/movie`, options)
+            .then(response => response.json())
+            .then(response => setMovies(response.results))
         fetch((`${URL_GENRE}${ID_TERROR}`), options)
             .then(response => response.json())
             .then(response => setTerrorMovies(response.results))
@@ -72,14 +50,18 @@ export default function Home() {
         setBuscar(!buscar)
     }
 
+    function home(){
+        setBuscar(false)
+    }
+
 
     return (
 
-        <Suspense fallback={<Loader/>}>
-            <Nav toggleBuscar={toggleBuscar} />
+        <Suspense fallback={<Loader />}>
+            <Nav toggleBuscar={toggleBuscar} home={home}/>
 
             {buscar ?
-                <Buscador toggleBuscar={toggleBuscar}/>
+                <Buscador toggleBuscar={toggleBuscar} />
                 :
                 <div>
                     <HomeHeader movies={movies} URL_IMAGE={URL_IMAGE} />

@@ -9,8 +9,15 @@ export default function MoviesProvider({children}) {
 
     const [peliculasBusqueda, setPeliculasBusqueda] = useState([])
 
+    //SEARCH BAR
+    const [isExpanded, setIsExpanded] = useState(false)
+  
+    function toggleExpand(){
+      setIsExpanded(!isExpanded)
+    }
+
   return (
-    <MoviesContext.Provider  value={{peliculasBusqueda, setPeliculasBusqueda, URL_IMAGE}}>
+    <MoviesContext.Provider  value={{peliculasBusqueda, setPeliculasBusqueda, URL_IMAGE, toggleExpand, isExpanded}}>
         {children}
     </MoviesContext.Provider>
   )

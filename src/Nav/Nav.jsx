@@ -1,21 +1,23 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Nav.css'
 import us1 from '../assets/us1.png'
 import logo from '../assets/netflix_logo_icon.png'
 import logoDesk from '../assets/logo-netflix.png'
 import SearchBar from '../SearchBar/SearchBar'
 
-export default function Nav({toggleBuscar}) {
+export default function Nav({ toggleBuscar, home }) {
 
     const [fix, setFix] = useState(false)
 
-    function setFixed() {
-        if (window.scrollY >= 10) {
-            setFix(true)
-        } else { setFix(false) }
-    }
+    useEffect(() => {
+        function setFixed() {
+            if (window.scrollY >= 10) {
+                setFix(true)
+            } else { setFix(false) }
+        }
 
-    window.addEventListener('scroll', setFixed)
+        window.addEventListener('scroll', setFixed)
+    }, [window.scroll])
 
 
     return (
@@ -28,7 +30,7 @@ export default function Nav({toggleBuscar}) {
             <div className='div-izquierda-desktop'>
                 <img className='logo-desk' src={logoDesk} alt="logo" />
                 <ul className='ul-nav'>
-                    <li onClick={toggleBuscar}>Inicio</li>
+                    <li onClick={home}>Inicio</li>
                     <li>Series</li>
                     <li>Peliculas</li>
                     <li>Novedades populares</li>
@@ -39,12 +41,12 @@ export default function Nav({toggleBuscar}) {
 
 
             <div className='div-derecha'>
-            <SearchBar className="search-bar" toggleBuscar={toggleBuscar}/>
+                <SearchBar className="search-bar" toggleBuscar={toggleBuscar} />
                 <img className='caca' src={us1} alt="user" />
             </div>
 
             <div className='div-derecha-desktop'>
-                <SearchBar toggleBuscar={toggleBuscar}/>
+                <SearchBar toggleBuscar={toggleBuscar} />
                 <span className='niños'>Niños</span>
                 <i className="bi bi-bell"></i>
                 <img className='caca' src={us1} alt="user" />
