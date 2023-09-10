@@ -10,7 +10,7 @@ import 'swiper/css/pagination';
 
 import './carousel.css';
 
-export default function App({ URL_IMAGE, movies, titulo }) {
+export default function App({ URL_IMAGE, series, titulo}) {
 
     const [agregado, setAgregado] =useState(false)
     const [width, setWidth] = useState(getInitialWidth)
@@ -87,23 +87,28 @@ export default function App({ URL_IMAGE, movies, titulo }) {
             <h2 className='titulo'>{titulo}</h2>
             <Swiper
                 slidesPerView={width}
+                loop={true}
                 spaceBetween={5}
                 className="mySwiper"
             >
                 {
-                    movies.map((movie) => {
+                    series.map((serie) => {
+                        const imageError = !serie.poster_path || !serie.backdrop_path;
+                        if (imageError) {
+                            return null;
+                        }
                         return (
-                            <SwiperSlide key={movie.id}>
+                            <SwiperSlide key={serie.id}>
                                 <div className="swiper-slide-img">
                                     {<img
                                         className='img-carousel'
                                         src={imgCarousel < 768 
-                                            ? (`${URL_IMAGE}` + movie.poster_path) 
-                                            : (`${URL_IMAGE}` + movie.backdrop_path)}
-                                        alt={movie.title}
+                                            ? (`${URL_IMAGE}` + serie.poster_path) 
+                                            : (`${URL_IMAGE}` + serie.backdrop_path)}
+                                        alt={serie.title}
                                     /> || <Skeleton />}
                                     <div className='hover-div'>
-                                        <h3 className='title-hover'>{movie.title}</h3>
+                                        <h3 className='title-hover'>{serie.name}</h3>
                                         <div className='buttons-hover'>
                                             <p className='btn-hover-derecha'>
                                                 <button id='repro' className='btn-carousel-hover btn-repro'><i className="bi bi-play-fill"></i></button>
@@ -127,9 +132,9 @@ export default function App({ URL_IMAGE, movies, titulo }) {
 
 
 // {
-//     movies.map((movie)=>{
+//     series.map((serie)=>{
 //         return(
-//             <SwiperSlide><img className='img-carousel' src={(`${URL_IMAGE}` + movie.poster_path)} alt="" /></SwiperSlide>
+//             <SwiperSlide><img className='img-carousel' src={(`${URL_IMAGE}` + serie.poster_path)} alt="" /></SwiperSlide>
 //         )
 //     })
 // }

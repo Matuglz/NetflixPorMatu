@@ -1,0 +1,55 @@
+.container-editar-perfil{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-editar{
+    border-radius: 5px;
+}
+
+.input-nuevo-nombre{
+    width: 100%;
+    border: none;
+    height: 30px;
+    text-align: center;
+    border-radius: 3px;
+}
+
+.container-perfil-editado{
+    width: 200px;
+}
+
+.boton-editar-perfil{
+    width: 100%;
+    margin-top: 5px;
+    background-color: transparent;
+    height: 25px;
+    color: #595959;
+    border: 1px solid #595959;
+    border-radius: 3px;
+    font-weight: 500;
+}
+
+.boton-editar-perfil:hover{
+    color: white;
+    border: 1px solid white;
+    cursor: pointer;
+}
+
+.boton-eliminar-perfil{
+    width: 100%;
+    height: 25px;
+    border: 1px solid rgb(175, 40, 40);
+    color: rgb(175, 40, 40);
+    background-color: transparent;
+    margin-top: 5px;
+    border-radius: 3px;
+}
+
+.boton-eliminar-perfil:hover{
+    cursor: pointer;
+    color: red;
+    border: 1px solid red;
+}

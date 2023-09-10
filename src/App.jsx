@@ -6,6 +6,9 @@ import Home from './Home/Home'
 import Pruebas from './Prubas/Pruebas'
 import { SkeletonTheme } from 'react-loading-skeleton'
 import MoviesProvider from './Context/MoviesContext'
+import AgregarUsuario from './AgregarUsuario/AgregarUsuario'
+import AdministrarPerfiles from './AdministrarPerfiles/AdministrarPerfiles'
+import EdtarPerfil from './EditarPerfil/EdtarPerfil'
 
 
 function App() {
@@ -16,6 +19,9 @@ function App() {
       <MoviesProvider>
         <BrowserRouter>
           <Routes>
+            <Route path='/EditarPerfil' element={<EdtarPerfil/>}/>
+            <Route path='/AdministrarPerfiles' element={<AdministrarPerfiles/>}/>
+            <Route path='/AgregarUsuario' element={<AgregarUsuario />}/>
             <Route path='/pruebas' element={<Pruebas />} />
             <Route path='/' element={<Inicio />} />
             <Route path='/Usuarios' element={<QuienEs />} />

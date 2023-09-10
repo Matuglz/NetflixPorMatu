@@ -1,0 +1,34 @@
+.container-administrar{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+    height: 100vh;
+}
+
+.lapiz-editar{
+    top: 40%;
+    bottom: 0;
+    right: 0;
+    left: 15%;
+}
+
+.user-img-editar{
+    border: none;
+}
+.user-img-editar:hover{
+    border: none;
+}
+
+.img-container-editar{
+    border: 5px solid transparent;
+    height: 130px;}
+
+.img-container-editar:hover{
+    border: 5px solid #595959;
+    border-radius: 10px;
+    
+
+}

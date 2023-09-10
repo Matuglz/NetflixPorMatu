@@ -1,6 +1,5 @@
 import React, { useState, useEffect, Suspense, lazy } from 'react'
 import './Home.css'
-import axios from 'axios'
 const Carousel = lazy(() => import('../Carousel/Carousel'))
 import HomeHeader from '../HomeHeader/HomeHeader';
 import Nav from '../Nav/Nav'
@@ -16,30 +15,28 @@ export default function Home() {
         }
     };
 
-    const API_URL = 'https://api.themoviedb.org/3'
-    const API_KEY = '533a578c877e7cb556879585b0496734'
-    const API_IMAGE = 'https://image.tmdb.org/t/p/original'
+    const API_URL = 'https://api.themoviedb.org/3/discover/tv?include_adult=false&include_null_first_air_dates=false&language=es-MX&page=1&sort_by=popularity.desc'
     const URL_IMAGE = 'https://image.tmdb.org/t/p/original'
-    const URL_GENRE = 'https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=true&language=en-US&page=2&sort_by=popularity.desc&with_genres='
-    const ID_TERROR = '27'
-    const ID_ACTION = '12'
+    const URL_GENRE = 'https://api.themoviedb.org/3/discover/tv?include_adult=false&include_null_first_air_dates=false&language=es-MX&page=2&sort_by=popularity.desc&with_genres='
+    const ID_CRIME = '80'
+    const ID_ACTION = '10759'
 
-    const [actionMovies, setActionMovies] = useState([])
-    const [terrorMovies, setTerrorMovies] = useState([])
-    const [movies, setMovies] = useState([])
+    const [actionSeries, setActionSeries] = useState([])
+    const [crimeSeries, setCrimeSeries] = useState([])
+    const [series, setSeries] = useState([])
 
     //-----------------------------------------------------
 
     useEffect(() => {
-        fetch(`${API_URL}/discover/movie`, options)
+        fetch(`${API_URL}`, options)
             .then(response => response.json())
-            .then(response => setMovies(response.results))
-        fetch((`${URL_GENRE}${ID_TERROR}`), options)
+            .then(response => setSeries(response.results))
+        fetch((`${URL_GENRE}${ID_CRIME}`), options)
             .then(response => response.json())
-            .then(response => setTerrorMovies(response.results))
+            .then(response => setCrimeSeries(response.results))
         fetch((`${URL_GENRE}${ID_ACTION}`), options)
             .then(response => response.json())
-            .then(response => setActionMovies(response.results))
+            .then(response => setActionSeries(response.results))
     }, [])
 
 
@@ -64,10 +61,10 @@ export default function Home() {
                 <Buscador toggleBuscar={toggleBuscar} />
                 :
                 <div>
-                    <HomeHeader movies={movies} URL_IMAGE={URL_IMAGE} />
-                    <Carousel URL_IMAGE={URL_IMAGE} movies={movies} titulo={"Populares en netflix"} />
-                    <Carousel URL_IMAGE={URL_IMAGE} movies={terrorMovies} titulo={"Terror"} />
-                    <Carousel URL_IMAGE={URL_IMAGE} movies={actionMovies} titulo={"Accion"} />
+                    <HomeHeader series={series} URL_IMAGE={URL_IMAGE} />
+                    <Carousel URL_IMAGE={URL_IMAGE} series={series} titulo={"Populares en netflix"} />
+                    <Carousel URL_IMAGE={URL_IMAGE} series={crimeSeries} titulo={"Terror"} />
+                    <Carousel URL_IMAGE={URL_IMAGE} series={actionSeries} titulo={"Accion"} />
                 </div>}
         </Suspense>
 

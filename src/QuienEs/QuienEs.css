@@ -1,53 +1,74 @@
-.contenedor-usuarios{
-    background-color: #0f0f0f;
-    height: 100vh;
+.container-principal {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    height: 70vh;
 }
 
-.titulo-usuarios{
-    color: white;
-    margin-top: -50px;
-    margin-bottom: 50px;
-}
-
-.usuarios{
+.container {
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
-    gap: 20px;
     text-align: center;
-    font-size: .8rem;
-    color: #dedede;
+    gap: 10px;
 }
 
-
-.usuario-quien{
-    width: 20vw;
-    height: 24vh;
+.user-container {
+    /* border: 1px solid white; */
+    width: 140px;
+    /* height: 130px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
-.usuario-quien img{
+.user-img {
     width: 100%;
     border-radius: 5px;
-    border: 2px solid transparent;
-    
+    border: 3px solid transparent;
 }
 
-.usuario-quien img:hover{
-    border: 2px solid #dedede;
+.user-img:hover{
+    border: 3px solid white;
     cursor: pointer;
 }
 
-@media(min-width:768px){
-    .usuario-quien{
-        width: 10vw;
-        height: 12vh;
+.boton-administrar{
+    width: 200px;
+    height: 35px;
+    background-color: transparent;
+    color: #595959;
+    border: 1px solid #595959;
+    border-radius: 2px;
+}
+
+.boton-administrar:hover{
+    cursor: pointer;
+    color: white;
+    border: 1px solid white;
+}
+
+@media (min-width: 768px){
+    .logo{
+        display: none;
     }
 
-    .titulo-usuarios{
-        margin-top:-200px;
+    .container-principal{
+        justify-content: center;
+        align-items: center;
+        height: 90vh;
+        gap: 40px;
     }
+
+    .quien{
+        font-size: 3rem;
+        font-weight: 400;
+    }
+
+    .icon{
+        font-size: 3rem;
+    }
+
 }
